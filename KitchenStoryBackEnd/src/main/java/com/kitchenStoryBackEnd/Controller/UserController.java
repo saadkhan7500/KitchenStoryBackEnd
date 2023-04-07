@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kitchenStoryBackEnd.Authentication.UserAuthentication;
 import com.kitchenStoryBackEnd.Entities.User;
 import com.kitchenStoryBackEnd.Repo.UserRepo;
 
@@ -45,7 +46,7 @@ public class UserController {
 	
 	//API to authenticate the user at the time of login
 	@PostMapping("/checkUser")
-	User  AuthenticateUser(@RequestBody User user)
+	User  AuthenticateUser(@RequestBody UserAuthentication user)
 	{
 		System.out.println("Authenticate user API calling");
 		User u = repo.findByEmail(user.getEmail());
