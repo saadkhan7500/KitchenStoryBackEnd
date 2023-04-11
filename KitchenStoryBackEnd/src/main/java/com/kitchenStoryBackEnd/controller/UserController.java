@@ -1,4 +1,4 @@
-package com.kitchenStoryBackEnd.Controller;
+package com.kitchenStoryBackEnd.controller;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kitchenStoryBackEnd.Authentication.UserAuthentication;
-import com.kitchenStoryBackEnd.Entities.User;
-import com.kitchenStoryBackEnd.Repo.UserRepo;
+import com.kitchenStoryBackEnd.authentication.UserAuthentication;
+import com.kitchenStoryBackEnd.entities.User;
+import com.kitchenStoryBackEnd.repo.UserRepo;
 
 @CrossOrigin
 @RestController

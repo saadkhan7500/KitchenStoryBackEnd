@@ -1,4 +1,4 @@
-package com.kitchenStoryBackEnd.Entities;
+package com.kitchenStoryBackEnd.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

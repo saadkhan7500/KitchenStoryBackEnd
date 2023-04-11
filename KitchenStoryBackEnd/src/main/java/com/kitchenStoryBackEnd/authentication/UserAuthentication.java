@@ -1,4 +1,4 @@
-package com.kitchenStoryBackEnd.Authentication;
+package com.kitchenStoryBackEnd.authentication;
 
 public class UserAuthentication {
 	
