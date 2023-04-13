@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kitchenStoryBackEnd.authentication.UserAuthentication;
 import com.kitchenStoryBackEnd.entities.User;
 import com.kitchenStoryBackEnd.repo.UserRepo;
+import com.kitchenStoryBackEnd.service.UserService;
 
 @CrossOrigin
 @RestController
 public class UserController {
 
 	@Autowired
-	UserRepo repo;
+	UserService service;
 	
 	
 	//API to add the new user at the time of registration
@@ -29,77 +30,47 @@ public class UserController {
 	String addUser(@RequestBody User user)
 	{
 		System.out.println("Add user API calling");
-		repo.save(user);
-		return "success";
+	    return service.addUserService(user);
 	}
 	
 	//API to get the user by email
 	@GetMapping("getUser/{email}")
 	User getUserByEmail(@PathVariable String email)
 	{
-		User u = null;
+		
 		System.out.println("Get user API calling "+email);
-		u = repo.findByEmail(email);
-		System.out.println(u);
-	    return u;
+	    return service.getUserByEmailServic(email);
 	}
 	
 	//API to authenticate the user at the time of login
 	@PostMapping("/checkUser")
-	User  AuthenticateUser(@RequestBody UserAuthentication user)
+	User AuthenticateUser(@RequestBody UserAuthentication user)
 	{
 		System.out.println("Authenticate user API calling");
-		User u = repo.findByEmail(user.getEmail());
-		if(u!=null)
-		{
-	        if(u.getPassword().equals(user.getPassword()))
-	        {
-	        	return u;
-	        }
-	        else
-	        {
-	        	return null;
-	        }
-		}
-		return null;
+		
+		User u = service.AuthenticateUserService(user);
+		
+		return u;
 	}
 	
 	@GetMapping("/getAllUsers")
 	List<User> getAllUsers()
 	{
 		System.out.println("Get all user API calling");
-		List<User> u= (List<User>) repo.findAll();
-		return u;
+		return service.getAllUsersService();
 	}
 	
 	//Edit User API
 	@PutMapping("/editUser")
 	String editUser(@RequestBody User user)
 	{
-		User u = repo.findByEmail(user.getEmail());
-		if(u!=null)
-		{
-		u.setName(user.getName());
-		u.setGender(user.getGender());
-		u.setPno(user.getPno());
-		u.setDob(user.getDob());
-		u.setPassword(user.getPassword());
-		repo.save(u);
-		return "Success";
-		}
-		return "User not found with this email";
+		return service.editUserService(user);
 	}
 	
 	//Delete User API
 	@DeleteMapping("deleteUser/{email}")
 	String deleteUser(@PathVariable String email)
 	{
-		User u = repo.findByEmail(email);		
-		if(u!=null)
-		{
-			repo.delete(u);
-			return "Success";
-		}
-		return "User not found with this email";
+	     return service.deleteUserService(email);
 	}
 }
