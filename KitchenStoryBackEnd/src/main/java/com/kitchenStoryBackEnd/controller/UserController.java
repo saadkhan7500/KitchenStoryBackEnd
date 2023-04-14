@@ -26,9 +26,10 @@ public class UserController {
 	
 	//API to add the new user at the time of registration
 	@PostMapping("/addUser")
-	User addUser(@RequestBody User user)
+	User addUser(@RequestBody User user) throws InterruptedException
 	{
 		System.out.println("Add user API calling");
+		Thread.sleep(2000);
 	    return service.addUser(user);
 	}
 	
