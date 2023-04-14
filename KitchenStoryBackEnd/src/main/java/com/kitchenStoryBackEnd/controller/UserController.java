@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kitchenStoryBackEnd.authentication.UserAuthentication;
 import com.kitchenStoryBackEnd.entities.User;
-import com.kitchenStoryBackEnd.repo.UserRepo;
 import com.kitchenStoryBackEnd.service.UserService;
 
 @CrossOrigin
@@ -27,10 +26,10 @@ public class UserController {
 	
 	//API to add the new user at the time of registration
 	@PostMapping("/addUser")
-	String addUser(@RequestBody User user)
+	User addUser(@RequestBody User user)
 	{
 		System.out.println("Add user API calling");
-	    return service.addUserService(user);
+	    return service.addUser(user);
 	}
 	
 	//API to get the user by email
@@ -39,7 +38,7 @@ public class UserController {
 	{
 		
 		System.out.println("Get user API calling "+email);
-	    return service.getUserByEmailServic(email);
+	    return service.getUserByEmail(email);
 	}
 	
 	//API to authenticate the user at the time of login
@@ -48,7 +47,7 @@ public class UserController {
 	{
 		System.out.println("Authenticate user API calling");
 		
-		User u = service.AuthenticateUserService(user);
+		User u = service.AuthenticateUser(user);
 		
 		return u;
 	}
@@ -57,20 +56,20 @@ public class UserController {
 	List<User> getAllUsers()
 	{
 		System.out.println("Get all user API calling");
-		return service.getAllUsersService();
+		return service.getAllUsers();
 	}
 	
 	//Edit User API
 	@PutMapping("/editUser")
-	String editUser(@RequestBody User user)
+	User editUser(@RequestBody User user)
 	{
-		return service.editUserService(user);
+		return service.editUser(user);
 	}
 	
 	//Delete User API
 	@DeleteMapping("deleteUser/{email}")
 	String deleteUser(@PathVariable String email)
 	{
-	     return service.deleteUserService(email);
+	     return service.deleteUser(email);
 	}
 }

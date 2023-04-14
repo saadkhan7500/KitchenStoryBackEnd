@@ -16,13 +16,12 @@ public class UserService {
 	@Autowired
 	private UserRepo userRepo;
 	
-	public String addUserService(User user)
+	public User addUser(User user)
 	{
-		userRepo.save(user);
-		return "Success";
+		return userRepo.save(user);	
 	}
 	
-	public User AuthenticateUserService(UserAuthentication user)
+	public User AuthenticateUser(UserAuthentication user)
 	{
 		User u = userRepo.findByEmail(user.getEmail());
 		if(u!=null)
@@ -40,20 +39,20 @@ public class UserService {
 		return null;
 	}
 	
-	public User getUserByEmailServic(String email)
+	public User getUserByEmail(String email)
 	{
 		User u = null;
 		u = userRepo.findByEmail(email);
 		return u;
 	}
 	
-	public List<User> getAllUsersService()
+	public List<User> getAllUsers()
 	{
 		List<User> u= (List<User>) userRepo.findAll();
 		return u;
 	}
 	
-	public String editUserService(User user)
+	public User editUser(User user)
 	{
 		User u = userRepo.findByEmail(user.getEmail());
 		if(u!=null)
@@ -63,13 +62,13 @@ public class UserService {
 		u.setPno(user.getPno());
 		u.setDob(user.getDob());
 		u.setPassword(user.getPassword());
-		userRepo.save(u);
-		return "Success";
+		return userRepo.save(u);
+		 
 		}
-		return "User not found with this email";
+		return u;
 	}
 	
-	public String deleteUserService(String email)
+	public String deleteUser(String email)
 	{
 		User u = userRepo.findByEmail(email);		
 		if(u!=null)

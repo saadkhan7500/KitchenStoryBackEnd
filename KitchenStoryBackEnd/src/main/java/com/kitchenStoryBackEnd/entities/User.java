@@ -1,7 +1,12 @@
 package com.kitchenStoryBackEnd.entities;
 
+
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 
 @Entity
 public class User 
@@ -14,12 +19,16 @@ public class User
 	private String pno;
 	private String password;
 	
+	@OneToOne(targetEntity = UserAddress.class,cascade = CascadeType.ALL)
+    private UserAddress userAddress;
+	
 	private User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	private User(String email, String name, String dob, String gender, String pno, String password) {
+	public User(String email, String name, String dob, String gender, String pno, String password,
+			UserAddress userAddress) {
 		super();
 		this.email = email;
 		this.name = name;
@@ -27,6 +36,7 @@ public class User
 		this.gender = gender;
 		this.pno = pno;
 		this.password = password;
+		this.userAddress = userAddress;
 	}
 
 	public String getEmail() {
@@ -77,16 +87,19 @@ public class User
 		this.password = password;
 	}
 
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", name=" + name + ", dob=" + dob + ", gender=" + gender + ", pno=" + pno
-				+ ", password=" + password + "]";
+				+ ", password=" + password + ", userAddress=" + userAddress + "]";
 	}
-	
-	
-	
-	
-	
-	
 
+	
 }
