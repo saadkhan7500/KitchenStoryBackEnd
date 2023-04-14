@@ -15,17 +15,30 @@ public class Purchased {
 	private int productId;
 
 	private String userEmail;
+	
+	private String status;
 
 	public Purchased() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Purchased(int id, int productId, String userEmail) {
+	public Purchased(int id, int productId, String userEmail, String status) {
 		super();
 		this.id = id;
 		this.productId = productId;
 		this.userEmail = userEmail;
+		this.status = status;
+	}
+
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public int getId() {

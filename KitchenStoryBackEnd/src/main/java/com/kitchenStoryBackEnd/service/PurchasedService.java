@@ -1,5 +1,7 @@
 package com.kitchenStoryBackEnd.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,14 @@ public class PurchasedService {
 	
 	public Purchased addPurchased(Purchased purchased)
 	{
+		purchased.setStatus("Pending");
 		return purchasedRepo.save(purchased);
 	}
-
+	
+	public List<Purchased> getAllPurchasedService()
+	{
+		List<Purchased> pur= (List<Purchased>) purchasedRepo.findAll();
+		return pur;
+	}
+	
 }

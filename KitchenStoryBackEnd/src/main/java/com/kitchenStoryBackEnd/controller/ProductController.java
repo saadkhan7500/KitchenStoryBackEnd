@@ -48,4 +48,10 @@ public class ProductController {
 		productRepo.save(product);
 	}
 
+	@GetMapping("/getProductById/{id}")
+	public Product getProductById(@PathVariable int id)
+	{
+		return productService.getProductByIdService(id);
+	}
+	
 }

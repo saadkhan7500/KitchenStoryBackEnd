@@ -55,6 +55,11 @@ public class ProductService {
 		
 	}
 	
+	public Product getProductByIdService(int id)
+	{
+		return productRepo.findById(id);
+	}
+	
 	/*
 	 * public List<Product> findProdcutsByCategory(String category) { List<Product>
 	 * products=productRepo.findProdcutsByCategory(category); return products; }
