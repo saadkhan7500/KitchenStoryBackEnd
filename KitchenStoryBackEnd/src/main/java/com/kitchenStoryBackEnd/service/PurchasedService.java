@@ -26,4 +26,10 @@ public class PurchasedService {
 		return pur;
 	}
 	
+	public List<Purchased> getPurchasedByUserEmailService(String email)
+	{
+		List<Purchased> pur = (List<Purchased>) purchasedRepo.findByUserEmail(email);
+		return pur;
+	}
+	
 }
