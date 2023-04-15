@@ -21,8 +21,9 @@ public class PurchasedController {
 	
 	
 	@PostMapping("/addPurchased")
-	public Purchased addPurchased(@RequestBody Purchased purchased) 
+	public Purchased addPurchased(@RequestBody Purchased purchased) throws InterruptedException 
 	{
+		Thread.sleep(2000);
 		return purchasedService.addPurchased(purchased);
 	}
 	@GetMapping("/getAllPurchased")
