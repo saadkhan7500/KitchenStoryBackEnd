@@ -27,4 +27,12 @@ public class AdminController {
 	{
 		return adminService.getAdmin(admin);
 	}
+	
+	@PostMapping("/resetpassword")
+	public Admin resetPassword(@RequestBody Admin admin)
+	{
+		System.out.println(admin);
+		return adminService.findByUsername(admin.getEmail());
+ 
+	}
 }

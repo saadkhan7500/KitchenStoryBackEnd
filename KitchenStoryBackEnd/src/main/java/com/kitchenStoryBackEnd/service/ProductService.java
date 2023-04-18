@@ -59,6 +59,11 @@ public class ProductService {
 	{
 		return productRepo.findById(id);
 	}
+
+	public List<Product> findProductsByNameOrCatgegory(String search) {
+		
+		return productRepo.findProductsByNameOrCatgegory(search);
+	}
 	
 	/*
 	 * public List<Product> findProdcutsByCategory(String category) { List<Product>

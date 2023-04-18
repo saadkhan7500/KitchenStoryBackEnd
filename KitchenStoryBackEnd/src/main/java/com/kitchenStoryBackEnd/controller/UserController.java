@@ -26,7 +26,7 @@ public class UserController {
 	
 	//API to add the new user at the time of registration
 	@PostMapping("/addUser")
-	User addUser(@RequestBody User user) throws InterruptedException
+	public User addUser(@RequestBody User user) throws InterruptedException
 	{
 		System.out.println("Add user API calling");
 		Thread.sleep(2000);
@@ -35,7 +35,7 @@ public class UserController {
 	
 	//API to get the user by email
 	@GetMapping("getUser/{email}")
-	User getUserByEmail(@PathVariable String email)
+	public User getUserByEmail(@PathVariable String email)
 	{
 		
 		System.out.println("Get user API calling "+email);
@@ -44,7 +44,7 @@ public class UserController {
 	
 	//API to authenticate the user at the time of login
 	@PostMapping("/checkUser")
-	User AuthenticateUser(@RequestBody UserAuthentication user)
+	public User AuthenticateUser(@RequestBody UserAuthentication user)
 	{
 		System.out.println("Authenticate user API calling");
 		
@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/getAllUsers")
-	List<User> getAllUsers()
+	public List<User> getAllUsers()
 	{
 		System.out.println("Get all user API calling");
 		return service.getAllUsers();
@@ -62,7 +62,7 @@ public class UserController {
 	
 	//Edit User API
 	@PutMapping("/editUser")
-	User editUser(@RequestBody User user)
+	public User editUser(@RequestBody User user)
 	{
 		return service.editUser(user);
 	}

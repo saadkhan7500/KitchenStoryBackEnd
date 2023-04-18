@@ -21,6 +21,12 @@ public class AdminService {
 	{
 		return adminRepo.findByEmailAndPassword(admin.getEmail(), admin.getPassword());
 	}
+
+	public Admin findByUsername(String email) {
+		
+		 Admin admin=adminRepo.findByEmail(email);
+		 return adminRepo.save(admin);
+	}
 	
 	
 }

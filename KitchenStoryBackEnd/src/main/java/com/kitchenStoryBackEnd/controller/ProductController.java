@@ -3,6 +3,8 @@ package com.kitchenStoryBackEnd.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +54,12 @@ public class ProductController {
 	public Product getProductById(@PathVariable int id)
 	{
 		return productService.getProductByIdService(id);
+	}
+	
+	@GetMapping("getNameOrCategory/{search}")
+	public ResponseEntity<List<Product>> findProductsByBrandOrCatgegory(@PathVariable("search")String search)
+	{
+		return new ResponseEntity<>(productService.findProductsByNameOrCatgegory(search),HttpStatus.OK);
 	}
 	
 }
